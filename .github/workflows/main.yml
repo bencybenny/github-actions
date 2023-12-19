@@ -1,0 +1,39 @@
+---
+name: "simple github actions workflow"
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Running date command"
+        run: date
+        shell: bash
+      - name: "os details"
+        run: cat /etc/os-release
+        shell: bash
+      - name: "user details"
+        run: whoami
+        shell: bash
+      - name: "current working directory before checkout"
+        run: |
+          pwd
+          ls -la
+      - name: "checkout repo"
+        uses: actions/checkout@v3
+      - name: "current working directory after checkout"
+        run: |
+          pwd
+          ls -la
+      - name: "Terraform installation"
+        run: |
+          wget https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
+          unzip terraform_1.6.6_linux_amd64.zip
+          ./terraform version
+          ls -la
+      - name: "Running setup.sh"
+        run: |
+          chmod +x setup.sh
+          ./setup.sh
