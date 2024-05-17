@@ -10,30 +10,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-  steps:
+    steps:
 
-    - name: "date command"
-      run: date
-      shell: bash
+      - name: "date command"
+        run: date
+        shell: bash
 
-    - name: "os details"
-      run: cat /etc/os-release
-      shell: bash
+      - name: "os details"
+        run: cat /etc/os-release
+        shell: bash
 
-    - name: "pwd"
-      run: |
-        pwd
-        ls -la
+      - name: "pwd"
+        run: |
+          pwd
+          ls -la
 
-    - name: "checkout repo"
-      uses: actions/checkout@v3
+      - name: "checkout repo"
+        uses: actions/checkout@v3
 
-    - name: "pwd"
-      run: |
-        pwd
-        ls -la    
+      - name: "pwd"
+        run: |
+          pwd
+          ls -la    
 
-    - name: "run sh file"
-      run: |
-        chmod +x setup.sh
-        ./setup.sh
+      - name: "run sh file"
+        run: |
+          chmod +x setup.sh
+          ./setup.sh
